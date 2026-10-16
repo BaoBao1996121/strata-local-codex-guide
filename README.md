@@ -90,7 +90,7 @@ token不是字节，也不是固定数量的中文字。应先经过对应tokeni
 
 ### 推荐入口：不保存会话的本地任务启动器
 
-安装Codex CLI并确保 `codex` 在PATH、Python3.11以上可用，然后双击 [Start-Local-Codex.bat](Start-Local-Codex.bat)。先启动Strata。选择64K日常或32K较早压缩，再输入工作目录和任务。
+安装Codex桌面版或独立CLI，并确保Python3.11以上可用，然后双击 [Start-Local-Codex.bat](Start-Local-Codex.bat)。启动器优先使用PATH中的 `codex`；找不到时会自动查找 `%LOCALAPPDATA%\OpenAI\Codex\bin` 下的桌面版CLI，并验证其可运行性，无需手工修改系统PATH。先启动Strata。选择64K日常或32K较早压缩，再输入工作目录和任务。
 
 启动器使用隔离的临时CODEX_HOME和 `codex exec --ephemeral`，正常退出后清理临时目录；不会更改现有云端默认模型。32K选项只收紧Codex客户端上下文和压缩阈值，**服务仍保持64K，不能据此期待显存下降，也不是重新测过的32K引擎配置**。异常断电/强制结束可能留下临时目录，需要另行清理。
 

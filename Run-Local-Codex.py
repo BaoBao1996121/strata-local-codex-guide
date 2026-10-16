@@ -1,10 +1,28 @@
 """Run a single local Codex task with ephemeral session storage and an isolated home."""
 import json, os, pathlib, shutil, subprocess, tempfile, urllib.request, tomllib
 
+def find_codex():
+    """Explorer may not inherit the desktop app's private CLI PATH."""
+    cli=shutil.which('codex')
+    if cli:
+        return cli
+    local=os.environ.get('LOCALAPPDATA')
+    if local:
+        candidates=list((pathlib.Path(local)/'OpenAI'/'Codex'/'bin').glob('*/codex.exe'))
+        candidates.sort(key=lambda p:p.stat().st_mtime,reverse=True)
+        for candidate in candidates:
+            try:
+                result=subprocess.run([str(candidate),'--version'],capture_output=True,
+                    timeout=10,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+                if result.returncode==0 and b'codex' in result.stdout.lower():
+                    return str(candidate)
+            except (OSError,subprocess.TimeoutExpired):
+                continue
+    raise RuntimeError('未找到 Codex CLI。请确认已安装 Codex 桌面版，或将独立 CLI 加入 PATH。')
+
 def main():
     here=pathlib.Path(__file__).resolve().parent
-    cli=shutil.which('codex')
-    if not cli: raise RuntimeError('Codex CLI was not found.')
+    cli=find_codex()
     with urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=5) as r:
         health=json.load(r)
     print('上下文档位：1 = 64K 日常（默认），2 = 32K 较早压缩')
