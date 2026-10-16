@@ -1,0 +1,44 @@
+model = "qwen3.8-flash-next-abliterated-iq2_xs"
+model_provider = "strata"
+model_context_window = 65536
+model_auto_compact_token_limit = 49152
+model_reasoning_effort = "low"
+tool_output_token_limit = 2048
+web_search = "disabled"
+
+[windows]
+sandbox = "unelevated"
+
+[sandbox_workspace_write]
+network_access = true
+
+[history]
+persistence = "none"
+
+[memories]
+generate_memories = false
+use_memories = false
+
+[features]
+apps = false
+browser_use = false
+browser_use_external = false
+computer_use = false
+image_generation = false
+view_image = true
+skill_search = false
+skip_host_skill_discovery = true
+unified_exec = false
+code_mode = false
+
+[model_providers.strata]
+name = "Strata local"
+base_url = "http://127.0.0.1:8080/v1"
+wire_api = "responses"
+requires_openai_auth = false
+supports_websockets = false
+stream_idle_timeout_ms = 600000
+
+[model_providers.strata.capabilities]
+remote_compaction = "unsupported"
+external_web_access = false

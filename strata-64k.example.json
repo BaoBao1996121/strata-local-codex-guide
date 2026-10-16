@@ -1,0 +1,49 @@
+{
+  "exe": "D:\\LocalAI\\Strata\\engine\\strata.exe",
+  "args": [
+    "--pack",
+    "D:\\LocalAI\\Strata-data\\packs\\iq2_xs",
+    "--native",
+    "D:\\LocalAI\\Strata-data\\models\\abliterated-iq2_xs\\Qwen3.8-Flash-Next-GSQ-RCO-abliterated-IQ2_XS-00001-of-00002.gguf",
+    "--ple-gguf",
+    "D:\\LocalAI\\Strata-data\\models\\abliterated-iq2_xs\\Qwen3.8-Flash-Next-GSQ-RCO-abliterated-IQ2_XS-00002-of-00002.gguf",
+    "--expert-profile",
+    "D:\\LocalAI\\Strata\\data\\expert-profile.bin",
+    "--expert-cache",
+    "auto",
+    "--prefill",
+    "512",
+    "--spec",
+    "4",
+    "--spec-min-p",
+    "0.5",
+    "--mtp",
+    "D:\\LocalAI\\Strata-data\\mtp\\rt",
+    "--max-context",
+    "65536",
+    "--mmap-experts",
+    "--vram-reserve-mib",
+    "1100",
+    "--kv",
+    "fp16",
+    "--kv-resident",
+    "20480"
+  ],
+  "cwd": "D:\\LocalAI\\Strata",
+  "tokenizer": "D:\\LocalAI\\Strata-data\\packs\\iq2_xs\\tokenizer",
+  "model_name": "qwen3.8-flash-next-abliterated-iq2_xs",
+  "log": null,
+  "lib_dirs": [
+    "D:\\LocalAI\\Strata\\.venv\\Lib\\site-packages\\nvidia\\cu13\\bin\\x86_64"
+  ],
+  "port": 8080,
+  "gpu": 0,
+  "gpus_asked": true,
+  "open_browser": false,
+  "host": "127.0.0.1",
+  "env": {
+    "STRATA_ROUTE_TAIL_SKIP": "0"
+  },
+  "fit_max_tokens": true,
+  "api_monitor": false
+}
