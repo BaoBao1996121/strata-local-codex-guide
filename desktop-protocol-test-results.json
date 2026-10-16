@@ -1,0 +1,27 @@
+{
+  "test_context": 65536,
+  "port": 8081,
+  "mtp": true,
+  "reserve_mib": 1100,
+  "turns": [
+    {
+      "turn": 1,
+      "seconds": 30.4,
+      "status": "completed",
+      "expected_text_found": true,
+      "stream_deltas": 4,
+      "tool_called": false,
+      "error_event": false
+    },
+    {
+      "turn": 2,
+      "seconds": 5.81,
+      "status": "completed",
+      "expected_text_found": true,
+      "stream_deltas": 11,
+      "tool_called": true,
+      "error_event": false
+    }
+  ],
+  "cloud_config_unchanged": true
+}
